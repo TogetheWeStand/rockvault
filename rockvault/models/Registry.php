@@ -18,6 +18,7 @@ class Registry extends Model
     public function rules()
     {
         return [
+            [['firstname', 'lastname'], 'string'],
             [['email', 'password'], 'required'],
             ['email', 'email'],
             ['email', 'validateAttribute'],
@@ -30,10 +31,10 @@ class Registry extends Model
     public function attributeLabels()
     {
         return [
-            'firstname' => 'First Name',
-            'lastname' => 'Last Name',
-            'email' => 'Email',
-            'password' => 'Password',
+            'firstname' => 'Имя',
+            'lastname' => 'Фамилия',
+            'email' => 'Почтовый ящик *',
+            'password' => 'Пароль *',
         ];
     }
 
@@ -46,7 +47,7 @@ class Registry extends Model
             $alreadyExists = Users::find()->where([$attribute => $this->$attribute])->one();
 
             if (gettype($alreadyExists->$attribute)  !== 'NULL')
-                $this->addError($attribute, 'Already exists.');
+                $this->addError($attribute, 'Уже зарегистрирован.');
         }
     }
 
@@ -59,13 +60,14 @@ class Registry extends Model
         $newUser = new Users();
         $newUser->email = $this->email;
         $newUser->password = Yii::$app->security->generatePasswordHash($this->password);
+
         $newUser->firstname = $this->firstname;
         $newUser->lastname = $this->lastname;
         $newUser->save();
 
         //Add role for new user
-//        $auth = Yii::$app->authManager;
-//        $user = $auth->getRole('user');
-//        $auth->assign($user, $newUser->id);
+        $auth = Yii::$app->authManager;
+        $user = $auth->getRole('user');
+        $auth->assign($user, $newUser->id);
     }
 }

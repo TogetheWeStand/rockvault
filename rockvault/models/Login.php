@@ -34,8 +34,8 @@ class Login extends Model
     public function attributeLabels()
     {
         return [
-            'email' => 'Email',
-            'password' => 'Password',
+            'email' => 'Почтовый ящик',
+            'password' => 'Пароль',
         ];
     }
 
@@ -53,7 +53,7 @@ class Login extends Model
             $user = new User();
 
             if (!$currentUser || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect email or password.');
+                $this->addError($attribute, 'Не корректный почтовый ящик или пароль.');
             }
         }
     }

@@ -9,6 +9,8 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\widgets\LoginFormWidget;
+use app\widgets\RegistryFormWidget;
 
 AppAsset::register($this);
 ?>
@@ -24,12 +26,16 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+
 <?php $this->beginBody() ?>
+<?= (Yii::$app->user->isGuest ? LoginFormWidget::widget([]) : ''); ?>
+<?= (Yii::$app->user->isGuest ? RegistryFormWidget::widget([]) : ''); ?>
 
 <div class="wrap">
+
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+//        'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -43,9 +49,17 @@ AppAsset::register($this);
 //            ['label' => 'About', 'url' => ['/site/about']],
 //            ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ?
-            ['label' => 'Registry', 'url' => ['/site/registry']] : '',
+                ['label' => 'Регистрация', 'url' => '#', 'options' => [
+                    'id' => 'registry-btn',
+                    'data-toggle' => 'modal',
+                    'data-target' => '#registry-modal'
+                ]] : '',
             Yii::$app->user->isGuest ? (
-            ['label' => 'Login', 'url' => ['/site/login']]
+             ['label' => 'Авторизация', 'url' => '#', 'options' => [
+                     'id' => 'login-btn',
+                     'data-toggle' => 'modal',
+                     'data-target' => '#login-modal'
+             ]]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
@@ -72,9 +86,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-left">&copy; Rock Vault <?= date('Y') ?></p>
     </div>
 </footer>
 

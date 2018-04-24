@@ -1,3 +1,27 @@
+/*@font-face {*/
+    /*font-family: 'Engravers';*/
+    /*src: url('../../fonts/Engravers/Engravers.woff2') format('woff2'),*/
+    /*url('../../fonts/Engravers/Engravers.woff') format('woff');*/
+    /*font-weight: normal;*/
+    /*font-style: normal;*/
+/*}*/
+
+@font-face {
+    font-family: 'Engravers';
+    src: url(fonts/engravers/Engravers.eot);
+    src: url(fonts/engravers/Engravers.eot?#iefix) format('embedded-opentype'),
+    url(fonts/engravers/Engravers.woff) format('woff'),
+    url(fonts/engravers/Engravers.ttf) format('truetype'),
+    url(fonts/engravers/Engravers.svg) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#registry-btn a,
+#login-btn a {
+    font-family: Engravers;
+}
+
 html,
 body {
     height: 100%;
@@ -16,9 +40,14 @@ body {
 
 .footer {
     height: 60px;
-    background-color: #f5f5f5;
+    /*background-color: #f5f5f5;*/
+    background-color: #222;
     border-top: 1px solid #ddd;
     padding-top: 20px;
+}
+
+.footer p {
+  color: #999;
 }
 
 .jumbotron {

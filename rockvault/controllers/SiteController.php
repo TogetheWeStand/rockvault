@@ -55,8 +55,6 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
-     *
      * @return string
      */
     public function actionIndex()
@@ -77,10 +75,12 @@ class SiteController extends Controller
 
             $model->saveNewUser();
 
-            return $this->render('login', ['model' => $model]);
+            $registry_success = true;
         } else {
-            return $this->render('registry', ['model' => $model]);
+            $registry_success = false;
         }
+
+        return $this->render('index', ['registry' => $registry_success]);
     }
 
     /**
