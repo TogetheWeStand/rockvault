@@ -28,6 +28,7 @@ AppAsset::register($this);
 <body>
 
 <?php $this->beginBody() ?>
+
 <?= (Yii::$app->user->isGuest ? LoginFormWidget::widget([]) : ''); ?>
 <?= (Yii::$app->user->isGuest ? RegistryFormWidget::widget([]) : ''); ?>
 

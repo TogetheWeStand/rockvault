@@ -1,0 +1,64 @@
+.track-list {
+    width: 650px;
+    height: 600px;
+    background-color: rgba(211,211,211,.5);
+    margin-left: 250px;
+}
+
+.track-list audio {
+    width: 650px;
+}
+
+.track-list-body {
+    width: 650px;
+    height: 538px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.track-name {
+    width: fit-content;
+    height: 25px;
+    margin-left: 50px;
+    margin-top: 5px;
+    display: block;
+    cursor: pointer;
+    color: #0f0f0f;
+    font-family: Engravers;
+}
+
+#track-marquee {
+    font-family: Engravers;
+}
+
+#filter {
+    width: 650px;
+    background-color: rgba(211,211,211,.5);
+    margin-left: 250px;
+    margin-bottom: 20px;
+}
+
+#filter > div {
+    margin-left: 58px;
+}
+
+#filter-btn {
+    padding: 5px 0 5px 0;
+}
+
+#filter-btn input {
+    border: white;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.filter-body div {
+    width: 176px;
+    height: 30px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.filter-body div input {
+    border: 0px;
+}
