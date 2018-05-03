@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Search;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -59,7 +60,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $model = new Search();
+
+        return $this->render('index', ['model' => $model]);
     }
 
     /**
@@ -118,7 +121,15 @@ class SiteController extends Controller
 
     public function actionSearch()
     {
-        return $this->render('index', ['track' => 'Svin!']);
+        $model = new Search();
+
+        if (Yii::$app->request->post("Search")['artist']) {
+            $track = 'artist';
+        } else {
+            $track = 'Svintus!';
+        }
+
+        return $this->render('index', ['track' => $track, 'model' => $model]);
     }
 
     /**

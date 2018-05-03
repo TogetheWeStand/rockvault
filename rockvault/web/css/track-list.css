@@ -36,23 +36,25 @@
     background-color: rgba(211,211,211,.5);
     margin-left: 250px;
     margin-bottom: 20px;
+    padding-bottom: 5px;
 }
 
 #filter > div {
-    margin-left: 58px;
+    margin-left: 29px;
 }
 
 #filter-btn {
-    padding: 5px 0 5px 0;
-}
-
-#filter-btn input {
     border: white;
     background-color: white;
     border-radius: 3px;
+    margin: 12px 0 0 1px;
 }
 
-.filter-body div {
+.form-group label {
+    margin: 5px 0 0 2px;
+}
+
+#filter .form-group {
     width: 176px;
     height: 30px;
     margin-bottom: 5px;

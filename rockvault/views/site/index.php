@@ -31,36 +31,16 @@ $this->title = 'Rock Vault';
     }
 ?>
 
-<?php $form = ActiveForm::begin(['action' =>['site/search']]); ?>
-    <?= $form->field($model, 'firstname') ?>
-    <?= $form->field($model, 'lastname') ?>
-    <?= $form->field($model, 'email') ?>
+<?php $form = ActiveForm::begin(['action' => ['site/search'], 'id' => 'filter']); ?>
+    <?= $form->field($model, 'artist')->input('search', ['id' => 'artist']) ?>
+    <?= $form->field($model, 'track')->input('search', ['id' => 'track']) ?>
+    <?= $form->field($model, 'album')->input('search', ['id' => 'album']) ?>
 
-    <div id="filter-btn">
-        <?= Html::submitButton('Поиск', ['class' => 'btn btn-primary']) ?>
+    <div class="form-group">
+        <?= Html::submitButton('Поиск', ['id' => 'filter-btn']) ?>
     </div>
 
 <?php ActiveForm::end(); ?>
-
-<!--<form id="filter">-->
-<!--    <div class="filter-body">-->
-<!--        <div>-->
-<!--            <label for="album">Группа</label>-->
-<!--            <input id="artist" type="search">-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <label for="track">Песня</label>-->
-<!--            <input id="track" type="search">-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <label for="album">Альбом</label>-->
-<!--            <input id="album" type="search">-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div id="filter-btn">-->
-<!--        <input type="submit" value="Поиск">-->
-<!--    </div>-->
-<!--</form>-->
 
 <div class="track-list">
     <marquee id="track-marquee" behavior=" scroll" direction="left"><?= $track ?: '' ?></marquee>
