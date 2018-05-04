@@ -33,8 +33,8 @@ $this->title = 'Rock Vault';
 
 <?php $form = ActiveForm::begin(['action' => ['site/search'], 'id' => 'filter']); ?>
     <?= $form->field($model, 'artist')->input('search', ['id' => 'artist']) ?>
-    <?= $form->field($model, 'track')->input('search', ['id' => 'track']) ?>
     <?= $form->field($model, 'album')->input('search', ['id' => 'album']) ?>
+    <?= $form->field($model, 'track')->input('search', ['id' => 'track']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Поиск', ['id' => 'filter-btn']) ?>

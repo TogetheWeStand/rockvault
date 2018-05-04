@@ -2,7 +2,6 @@
 
 namespace app\controllers;
 
-use app\models\Search;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -10,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\Registry;
 use app\models\Login;
+use app\models\Search;
 
 class SiteController extends Controller
 {
@@ -123,13 +123,13 @@ class SiteController extends Controller
     {
         $model = new Search();
 
-        if (Yii::$app->request->post("Search")['artist']) {
-            $track = 'artist';
-        } else {
-            $track = 'Svintus!';
-        }
+        $track = $model->searchTrack(
+            Yii::$app->request->post("Search")['artist'],
+            Yii::$app->request->post("Search")['album'],
+            Yii::$app->request->post("Search")['track']
+        );
 
-        return $this->render('index', ['track' => $track, 'model' => $model]);
+        return $this->render('index', ['model' => $model, 'track' => $track]);
     }
 
     /**

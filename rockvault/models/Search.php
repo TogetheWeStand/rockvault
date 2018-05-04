@@ -2,10 +2,6 @@
 
 namespace app\models;
 
-use rockvault\models\search\Albums;
-use rockvault\models\search\Artists;
-use rockvault\models\search\Tracks;
-use Yii;
 use yii\base\Model;
 
 class Search extends Model
@@ -31,23 +27,43 @@ class Search extends Model
     {
         return [
             'artist' => 'Группа',
-            'track' => 'Песня',
             'album' => 'Альбом',
+            'track' => 'Песня',
         ];
     }
 
-    public function searchTrack($artist, $track, $album)
+    public function searchTrack($artist, $album, $track)
     {
         if (!empty($artist)) {
-            $artistM = new Artists();
+            $artist = Artists::find()->where(['=', 'name', $artist])->one();
         }
+
+//        var_dump($artist);
+//        var_dump($artist->albumsRel[0]->albums->tracksRel[1]->tracks->name);
+//        exit;
+        if (!empty($album)) {
+            $album = Albums::find()->
+//            where(['=', 'artist', $artist->id])->
+            where(['=', 'name', $album])->
+            one();
+        }
+
+//        var_dump($album);
+//        var_dump($album->artistsRel[0]->artists->name);
+//        var_dump($album->tracksRel[1]->tracks->name);
+//        exit;
 
         if (!empty($track)) {
-            $trackM = new Tracks();
+            $track = Tracks::find()->
+//            where(['=', 'album', $album->id])->
+            where(['=', 'name', $track])->
+            one();
         }
 
-        if (!empty($album)) {
-            $albumM = new Albums();
-        }
+//        var_dump($track);
+//        var_dump($track->albumsRel[0]->albums->artistsRel[0]->artists->name);
+//        exit;
+
+        return $track->name;
     }
 }
