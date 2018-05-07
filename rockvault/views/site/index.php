@@ -43,7 +43,7 @@ $this->title = 'Rock Vault';
 <?php ActiveForm::end(); ?>
 
 <div class="track-list">
-    <marquee id="track-marquee" behavior=" scroll" direction="left"><?= $track ?: '' ?></marquee>
+    <marquee id="track-marquee" behavior="scroll" direction="left"><?= $track ?: '' ?></marquee>
     <audio controls controlsList="nodownload">
         <source src="/mp3/One.mp3" type="audio/mpeg">
     </audio>

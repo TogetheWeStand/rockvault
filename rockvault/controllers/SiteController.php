@@ -123,40 +123,8 @@ class SiteController extends Controller
     {
         $model = new Search();
 
-        $track = $model->searchTrack(
-            Yii::$app->request->post("Search")['artist'],
-            Yii::$app->request->post("Search")['album'],
-            Yii::$app->request->post("Search")['track']
-        );
+        $data = $model->searchTrack(Yii::$app->request->post("Search")['artist']);
 
-        return $this->render('index', ['model' => $model, 'track' => $track]);
+        return $this->render('index', ['model' => $model, 'data' => $data]);
     }
-
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-//    public function actionContact()
-//    {
-//        $model = new ContactForm();
-//        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-//            Yii::$app->session->setFlash('contactFormSubmitted');
-//
-//            return $this->refresh();
-//        }
-//        return $this->render('contact', [
-//            'model' => $model,
-//        ]);
-//    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-//    public function actionAbout()
-//    {
-//        return $this->render('about');
-//    }
 }
