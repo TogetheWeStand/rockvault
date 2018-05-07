@@ -48,59 +48,41 @@ class m180504_144310_rockvault_base_structure extends Migration
             'track_id' => $this->integer(11),
         ]);
 
-//        $this->addForeignKey(
-//            'fk-themes-user_id',
-//            'themes',
-//            'user_id',
-//            'users',
-//            'id',
-//            'CASCADE'
-//        );
-//
-//        $this->addForeignKey(
-//            'fk-comments-user_id',
-//            'comments',
-//            'user_id',
-//            'users',
-//            'id',
-//            'CASCADE'
-//        );
-//
-//        $this->addForeignKey(
-//            'fk-comment_liked-user_id',
-//            'comment_liked',
-//            'user_id',
-//            'users',
-//            'id',
-//            'CASCADE'
-//        );
-//
-//        $this->addForeignKey(
-//            'fk-comments-theme_id',
-//            'comments',
-//            'theme_id',
-//            'themes',
-//            'id',
-//            'CASCADE'
-//        );
-//
-//        $this->addForeignKey(
-//            'fk-themes-group_id',
-//            'themes',
-//            'group_id',
-//            'groups',
-//            'id',
-//            'CASCADE'
-//        );
-//
-//        $this->addForeignKey(
-//            'fk-comment_liked-comment_id',
-//            'comment_liked',
-//            'comment_id',
-//            'comments',
-//            'id',
-//            'CASCADE'
-//        );
+        $this->addForeignKey(
+            'fk1-artist-album',
+            'artist_album_rel',
+            'artist_id',
+            'artists',
+            'id',
+            'CASCADE'
+        );
+
+        $this->addForeignKey(
+            'fk2-artist-album',
+            'artist_album_rel',
+            'album_id',
+            'albums',
+            'id',
+            'CASCADE'
+        );
+
+        $this->addForeignKey(
+            'fk1-album-track',
+            'album_track_rel',
+            'album_id',
+            'albums',
+            'id',
+            'CASCADE'
+        );
+
+        $this->addForeignKey(
+            'fk2-album-track',
+            'album_track_rel',
+            'track_id',
+            'tracks',
+            'id',
+            'CASCADE'
+        );
     }
 
     /**
@@ -108,40 +90,31 @@ class m180504_144310_rockvault_base_structure extends Migration
      */
     public function safeDown()
     {
-//        $this->dropForeignKey(
-//            'fk-themes-user_id',
-//            'themes'
-//        );
-//
-//        $this->dropForeignKey(
-//            'fk-comments-user_id',
-//            'comments'
-//        );
-//
-//        $this->dropForeignKey(
-//            'fk-comment_liked-user_id',
-//            'comment_liked'
-//        );
-//
-//        $this->dropForeignKey(
-//            'fk-comments-theme_id',
-//            'comments'
-//        );
-//
-//        $this->dropForeignKey(
-//            'fk-themes-group_id',
-//            'themes'
-//        );
-//
-//        $this->dropForeignKey(
-//            'fk-comment_liked-comment_id',
-//            'comment_liked'
-//        );
-//
-//        $this->dropTable('comment_liked');
-//        $this->dropTable('comments');
-//        $this->dropTable('groups');
-//        $this->dropTable('themes');
-//        $this->dropTable('users');
+        $this->dropForeignKey(
+            'fk1-artist-album',
+            'artist_album_rel'
+        );
+
+        $this->dropForeignKey(
+            'fk2-artist-album',
+            'artist_album_rel'
+        );
+
+        $this->dropForeignKey(
+            'fk1-album-track',
+            'album_track_rel'
+        );
+
+        $this->dropForeignKey(
+            'fk2-album-track',
+            'album_track_rel'
+        );
+
+        $this->dropTable('album_track_rel');
+        $this->dropTable('artist_album_rel');
+        $this->dropTable('tracks');
+        $this->dropTable('albums');
+        $this->dropTable('artists');
+        $this->dropTable('users');
     }
 }
