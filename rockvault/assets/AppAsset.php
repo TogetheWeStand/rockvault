@@ -25,6 +25,7 @@ class AppAsset extends AssetBundle
     ];
 
     public $js = [
+        'js/play_album.js',
     ];
 
     public $depends = [

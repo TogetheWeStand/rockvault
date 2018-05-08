@@ -32,14 +32,34 @@ class Search extends Model
         ];
     }
 
-    public function searchTrack($artist)
+    public function searchTrack($artist = null)
     {
-        $artist = null;
         $result = null;
 
         if (!empty($artist)) {
+            $result['artist'] = $artist;
             $artist = Artists::find()->where(['=', 'name', $artist])->one();
-            var_dump($artist);
+
+            if ($artist === null) {
+                return null;
+            }
+
+            foreach ($artist->albumsRel as $albumRel) {
+                $tracks = [];
+
+                foreach ($albumRel->albums->tracksRel as $trackRel) {
+                    $tracks[] = $trackRel->tracks->name;
+                }
+
+                $tracks[] = 'Murka';
+                $tracks[] = 'Clear sky';
+                $tracks[] = 'Buty and the beast';
+                $tracks[] = 'Hard rock aliluya!';
+                $tracks[] = 'Shurka';
+                $result['albums'][$albumRel->albums->name] = $tracks;
+            }
+
+            $result['visible'] = true;
         }
 
         return $result;

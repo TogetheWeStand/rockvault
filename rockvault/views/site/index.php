@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 /* @var $registry  app\controllers\SiteController */
-/* @var $track  app\controllers\SiteController */
+/* @var $data  app\controllers\SiteController */
 /* @var $form yii\bootstrap\ActiveForm */
 
 use yii\bootstrap\Modal;
@@ -42,11 +42,34 @@ $this->title = 'Rock Vault';
 
 <?php ActiveForm::end(); ?>
 
+<?php
+    if (isset($data['visible'])) {
+        echo "<div class='search-list'>";
+        echo "<div class='artist-name'>" . $data['artist'] . "</div>";
+        echo "<div class='albums row'>";
+
+        foreach ($data['albums'] as $key => $value) {
+            echo "<div class='item col-lg-3'>";
+            echo "<span>$key</span>";
+
+            foreach ($value as $track) {
+                echo "<div class='track' style='display: none'>$track</div>";
+            }
+
+            echo "</div>";
+        }
+
+        echo "</div>";
+        echo "</div>";
+    }
+?>
+
 <div class="track-list">
-    <marquee id="track-marquee" behavior="scroll" direction="left"><?= $track ?: '' ?></marquee>
+    <marquee id="track-marquee" behavior="scroll" direction="left"><?=  '' ?></marquee>
     <audio controls controlsList="nodownload">
         <source src="/mp3/One.mp3" type="audio/mpeg">
     </audio>
     <div class="track-list-body">
+        <div class="row"></div>
     </div>
 </div>
