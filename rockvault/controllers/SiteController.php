@@ -124,13 +124,7 @@ class SiteController extends Controller
         $model = new Search();
 
         $data = $model->searchTrack(Yii::$app->request->post("Search")['artist']);
-        $data['albums']['test1'] = [];
-        $data['albums']['Margin'] = [];
-        $data['albums']['Father God'] = [];
-        $data['albums']['Evel Death'] = [];
-        $data['albums']['Testament'] = [];
-        $data['albums']['True Sight'] = [];
-        $data['albums']['Naval Boat'] = [];
+
         return $this->render('index', ['model' => $model, 'data' => $data]);
     }
 }

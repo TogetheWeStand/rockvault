@@ -51,11 +51,6 @@ class Search extends Model
                     $tracks[] = $trackRel->tracks->name;
                 }
 
-                $tracks[] = 'Murka';
-                $tracks[] = 'Clear sky';
-                $tracks[] = 'Buty and the beast';
-                $tracks[] = 'Hard rock aliluya!';
-                $tracks[] = 'Shurka';
                 $result['albums'][$albumRel->albums->name] = $tracks;
             }
 

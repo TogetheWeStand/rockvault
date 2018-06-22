@@ -49,7 +49,7 @@ $this->title = 'Rock Vault';
         echo "<div class='albums row'>";
 
         foreach ($data['albums'] as $key => $value) {
-            echo "<div class='item col-lg-3'>";
+            echo "<div class='item col-lg-5'>";
             echo "<span>$key</span>";
 
             foreach ($value as $track) {
@@ -66,9 +66,10 @@ $this->title = 'Rock Vault';
 
 <div class="track-list">
     <marquee id="track-marquee" behavior="scroll" direction="left"><?=  '' ?></marquee>
-    <audio controls controlsList="nodownload">
-        <source src="/mp3/One.mp3" type="audio/mpeg">
-    </audio>
+    <div id="audio-container"></div>
+<!--    <audio controls controlsList="nodownload">-->
+<!--        <source src="" type="audio/mpeg">-->
+<!--    </audio>-->
     <div class="track-list-body">
         <div class="row"></div>
     </div>
